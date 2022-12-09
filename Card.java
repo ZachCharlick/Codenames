@@ -21,7 +21,7 @@ public class Card {
     }
 
     public Boolean isRevealed() {
-        // Return the color of the card
+        // Return if the card has been revealed - "flipped over"
         return this.flipped;
       }
   
