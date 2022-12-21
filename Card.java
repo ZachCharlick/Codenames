@@ -9,6 +9,10 @@ public class Card {
       this.color = color;
       this.flipped = false;
     }
+
+    public void flipCard(){
+      this.flipped = true;
+    }
   
     public String getWord() {
       // Return the word on the card

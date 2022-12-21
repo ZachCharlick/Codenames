@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BoardGUI {
 
@@ -36,17 +38,27 @@ public class BoardGUI {
 
             Color color = Board.getJavaColor(obj.getColor(i, j));
             System.out.println(color);
-
-            buttons[i][j].setBackground(color);
             
-            if (color.equals(Color.BLACK)|| color.equals(Color.BLUE)) {
-                buttons[i][j].setForeground(Color.WHITE);
-            } else {
-                buttons[i][j].setForeground(Color.BLACK);
-            }                
+                          
         
             buttons[i][j].setText(obj.getWord(i,j));
             buttons[i][j].setFont(new Font("Arial", Font.BOLD, 16));
+
+            ActionListener clickButtonAction = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (color.equals(Color.BLACK)|| color.equals(Color.BLUE)) {
+                        button.setForeground(Color.WHITE);
+                    } else {
+                        button.setForeground(Color.BLACK);
+                    }  
+
+                    button.setBackground(color);
+                }
+            };
+
+            buttons[i][j].addActionListener(clickButtonAction);
+            
             panel.add(buttons[i][j]);   
         }
     }
