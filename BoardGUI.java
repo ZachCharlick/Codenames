@@ -23,7 +23,6 @@ public class BoardGUI {
     this.panel = new JPanel(new GridLayout(5,5));
     this.buttons = new JButton[5][5];
 
-    //25 buttons
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             JButton button = new JButton();
@@ -40,7 +39,7 @@ public class BoardGUI {
 
             buttons[i][j].setBackground(color);
             
-            if (color.equals(Color.BLACK)) {
+            if (color.equals(Color.BLACK)|| color.equals(Color.BLUE)) {
                 buttons[i][j].setForeground(Color.WHITE);
             } else {
                 buttons[i][j].setForeground(Color.BLACK);
@@ -52,9 +51,16 @@ public class BoardGUI {
         }
     }
 
-    //add panel
+   
+    //screen size
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (int)(screenSize.getWidth()/2)-500;
+    int y = (int)(screenSize.getHeight()/2)-200;
+
+    //frame setup
     frame.add(panel);
-    frame.setSize(400,1000);
+    frame.setLocation(x,y);;
+    frame.setSize(1000, 400);
     frame.setVisible(true);
     
     }
