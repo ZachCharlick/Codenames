@@ -1,7 +1,9 @@
+import java.util.HashMap;
 import java.util.Random;
+import java.awt.Color;
 
 public class Board {
-    private Card[][] board;
+    public Card[][] board;
     private boolean isGameOver;
     private Wordbank wordbank;
 
@@ -49,11 +51,22 @@ public class Board {
             System.out.println();
         }
     }
+    private static final HashMap<String, Color> colorMap = new HashMap<>();
+        static{
+            colorMap.put("red", Color.RED);
+            colorMap.put("blue", Color.BLUE);
+            colorMap.put("white", Color.WHITE);
+            colorMap.put("black", Color.BLACK);
+        }
+    public static Color getJavaColor(String colorName){
+        return colorMap.get(colorName.toLowerCase());
+    }
 
     public static void main(String[] args) {
         String csvFile = "data.csv";
         Wordbank bank = new Wordbank(csvFile);
         Board board = new Board(bank, "red");
+        System.out.println(colorMap.toString());
         
         board.printBoard();
     }
